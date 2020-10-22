@@ -1,1 +1,13 @@
-test
+{{#if (eq column.valuePath 'themes') }}
+  <span>{{row.type}}</span>
+{{else if (eq column.valuePath 'sentiment')}}
+  {{cell-renderer/sentiment sentiment=row.netSentiment}}
+{{else if (eq column.valuePath 'netSentiment')}}
+  <span class={{sentimentClass}}>{{row.netSentiment}}</span>
+{{else if (eq column.valuePath 'mentions')}}
+  <span>{{formattedMentions}}</span>
+{{else if (eq column.valuePath 'weight')}}
+  <span>{{row.weight}} %</span>
+{{else if (eq column.valuePath 'delta')}}
+  <span class={{deltaClass}}>{{row.deltaValue}}</span>
+{{/if}}

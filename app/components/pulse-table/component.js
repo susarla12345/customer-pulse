@@ -12,69 +12,79 @@ const THEMES = [{
 },
 {
     type: 'Logistics',
-    netSentiment: 66,
-    mentions: 48600,
+    netSentiment: 92,
+    mentions: 249,
     weight: 56.6,
     deltaIncrease: true,
-    deltaValue: 5
+    deltaValue: 25
 },
 {
     type: 'Online experience',
-    netSentiment: 66,
-    mentions: 48600,
+    netSentiment: 45,
+    mentions: 678,
     weight: 56.6,
-    deltaIncrease: true,
-    deltaValue: 5
+    deltaIncrease: false,
+    deltaValue: 15
 },
 {
     type: 'customer care',
-    netSentiment: 66,
-    mentions: 48600,
+    netSentiment: 0,
+    mentions: 16300,
     weight: 56.6,
-    deltaIncrease: true,
-    deltaValue: 5
+    deltaIncrease: false,
+    deltaValue: 17
 },
 {
     type: 'Build attributes',
-    netSentiment: 66,
-    mentions: 48600,
+    netSentiment: -20,
+    mentions: 5200,
     weight: 56.6,
     deltaIncrease: true,
-    deltaValue: 5
+    deltaValue: 2
 }]
 
 const columns = [{
     label: 'Themes',
     valuePath: 'themes',
-    cellComponent: 'cell-renderer'
+    cellComponent: 'cell-renderer',
+    width: '20%'
   },
   {
     label: 'Sentiment',
     valuePath: 'sentiment',
-    cellComponent: 'cell-renderer'
+    cellComponent: 'cell-renderer',
+    width: '20%'
   },
   {
     label: 'Net sentiment',
     valuePath: 'netSentiment',
-    cellComponent: 'cell-renderer'
+    cellComponent: 'cell-renderer',
+    width: '10%'
   },
   {
       label: 'Mentions',
       valuePath: 'mentions',
-      cellComponent: 'cell-renderer'
-  }
+      cellComponent: 'cell-renderer',
+      width: '20%'
+  },
+  {
+    label: 'Weight',
+    valuePath: 'weight',
+    cellComponent: 'cell-renderer',
+    width: '10%'
+},
+{
+    label: 'Delta',
+    valuePath: 'delta',
+    cellComponent: 'cell-renderer',
+    width: '20%'
+}
 ]
 
 export default Component.extend({
     model: THEMES,
     columns: columns,
-    // table: computed(function() {
-    //     return new Table(this.columns, this.model, { enableSync: true });
-    // })
-
-    init() {
-        this._super(...arguments);
-        let table = new Table(this.columns, this.model);
-        this.set('table', table);
-      }
+    table: computed(function() {
+        return new Table(this.columns, this.model, { enableSync: true });
+    })
 })

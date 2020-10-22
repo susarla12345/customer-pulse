@@ -1,0 +1,40 @@
+.pulse-table-wrapper {
+  padding: 16px 32px;
+
+  .lt-head {
+    border-bottom: 1px solid black;
+  }
+
+  .lt-row {
+    border-bottom: 1px solid #cfd7df;
+  }
+
+  .lt-cell {
+    padding: 12px 0;
+  }
+
+  .lt-column {
+    padding-bottom: 12px;
+  }
+
+  .sentiment-bar-wrapper {
+    width: 70%;
+    height: 100%;
+    background: #ff6961;
+
+    .sentiment-bar-value {
+      height: 4px;
+      background: #77dd77
+    }
+  }
+
+  .sentiment {
+    &--green {
+      color: #77dd77;
+    }
+
+    &--red {
+      color: #ff6961
+    }
+  }
+}

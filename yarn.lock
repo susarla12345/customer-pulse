@@ -4137,6 +4137,13 @@ ember-resolver@^5.0.1:
     ember-cli-version-checker "^3.1.3"
     resolve "^1.12.0"
 
+ember-responsive@2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/ember-responsive/-/ember-responsive-2.0.7.tgz#c5359d53d0c09fc0dd06e0d8db0fb101754c45ba"
+  integrity sha512-Iqcfe8zB3UgR3jfyqigFXIMN5INMvkSZ2hHTiwE1yFl8DxXbPsT4HXyL8Te6KhyPe6P+ax9B0SCJtwy970xj5A==
+  dependencies:
+    ember-cli-babel "^6.6.0"
+
 ember-rfc176-data@^0.3.13, ember-rfc176-data@^0.3.16, ember-rfc176-data@^0.3.5:
   version "0.3.16"
   resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.3.16.tgz#2ace0ac9cf9016d493a74a1d931643a308679803"
