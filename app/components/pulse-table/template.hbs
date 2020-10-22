@@ -1,0 +1,16 @@
+<div class="pulse-table-wapper">
+  {{#light-table table
+    as |t|}}
+
+    {{t.head
+      iconAscending='arrow-up'
+      iconDescending='arrow-down'
+    }}
+
+    {{#t.body
+      class="list"
+      canSelect=false
+      as |body| }}
+    {{/t.body}}
+  {{/light-table}}
+</div>
