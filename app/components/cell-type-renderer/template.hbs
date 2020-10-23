@@ -1,5 +1,5 @@
 {{#if (eq column.valuePath 'themes') }}
-  <span>{{row.type}}</span>
+  <span class="theme-type-name">{{row.type}}</span>
 {{else if (eq column.valuePath 'sentiment')}}
   {{cell-renderer/sentiment sentiment=row.netSentiment}}
 {{else if (eq column.valuePath 'netSentiment')}}
@@ -10,23 +10,4 @@
   <span>{{row.weight}} %</span>
 {{else if (eq column.valuePath 'delta')}}
   <span class={{deltaClass}}>{{row.deltaValue}}</span>
-{{/if}}
-
-{{#if showTable}}
-  <div class="pulse-table-type-wrapper">
-    {{#light-table table
-      as |t|}}
-
-      {{t.head
-        iconAscending='arrow-up'
-        iconDescending='arrow-down'
-      }}
-
-      {{#t.body
-        class="list"
-        canSelect=false
-        as |body| }}
-      {{/t.body}}
-    {{/light-table}}
-  </div>
 {{/if}}

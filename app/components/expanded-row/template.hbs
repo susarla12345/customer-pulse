@@ -1,22 +1,16 @@
-<div class="pulse-table-wrapper">
+<div class="pulse-table-type-wrapper">
   {{#light-table table
     as |t|}}
-
+{{!-- 
     {{t.head
       iconAscending='arrow-up'
       iconDescending='arrow-down'
-    }}
+    }} --}}
 
     {{#t.body
       class="list"
-      canSelect=false
-      canExpand=true
       multiRowExpansion=false
       as |body| }}
-
-      {{#body.expanded-row as |row|}}
-        {{expanded-row}}
-      {{/body.expanded-row}}
     {{/t.body}}
   {{/light-table}}
 </div>
