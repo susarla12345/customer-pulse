@@ -2,10 +2,13 @@
   display: flex;
   border: 1px solid #f7f7f7;
 
-  .feedback-list {
+  .feedback-list-wrapper {
     width: 60%;
-    max-height: 650px;
-    overflow-y: scroll;
+    
+    .feedback-list {
+      max-height: 650px;
+      overflow-y: scroll;
+    }
   }
 
   .feedback-content {
@@ -86,3 +89,20 @@
 .sentiment-chart {
   border-bottom: 2px solid #f7f7f7;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  margin-bottom: 12px;
+
+  .sort-label {
+    font-size: 12px;
+    margin: 0 4px;
+  }
+
+  .sort-by {
+    border: none;
+  }
+}
+
