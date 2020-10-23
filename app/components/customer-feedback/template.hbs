@@ -3,7 +3,7 @@
     {{#each feedback as |f|}}
       <div class="feedback-content">
         <div class="header">
-          <span class="rating">
+          <span class="rating {{if (gt f.rating 5) 'rating--positive' 'rating--negative'}}">
             {{f.rating}}
           </span>
 
@@ -11,8 +11,11 @@
             {{f.description}}
           </span>
         </div>
+        <div class="tags-wrapper">
+          {{customer-feedback/tags attributes=f.attributes}}
+        </div>
         <div class="feedback-content--time">
-          {{f.createdOn}}
+          {{moment-from-now f.createdOn}}
         </div>
       </div>
     {{/each}}

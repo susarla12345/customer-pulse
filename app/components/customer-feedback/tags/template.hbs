@@ -1,0 +1,13 @@
+<div class="tag-list">
+  {{#each tags as |tag|}}
+    <div class="tag-wrapper {{tag.class}}">
+      <span class="parent">
+        {{tag.parent}}
+      </span>
+      <span class="divider"> : </span>
+      <span>
+        {{tag.child}}
+      </span>
+    </div>
+  {{/each}}
+</div>
