@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { computed, set } from '@ember/object';
 
 const FEEDBACK = [{
   description: "The order Should have arrived on monday but i still have not received it, not i have received any status of my order",
@@ -42,9 +42,240 @@ const FEEDBACK = [{
       'email-response': 4
     }
   }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
+},
+
+{
+  description: "Print Quality was fantastic, delivery was slower than i expected, They keep spamming me with advertisements and offers daily",
+  rating: 8,
+  createdOn: new Date('Thu May 7 2020 12:00:41 GMT+0530 (India Standard Time)'),
+  attributes: {
+    'product-attributes': {
+      'print-quality': 6
+    },
+    'logistics': {
+      'delivery': 5,
+      'speed': 5
+    },
+    'online-experience': {
+      'easy-to-use': 10
+    },
+    'customer-care': {
+      'helpdesk-software': 10,
+      'email-response': 4
+    }
+  }
 }
 ]
 
 export default Component.extend({
-  feedback: FEEDBACK
+  feedback: FEEDBACK,
+
+  actions: {
+    search(event) {
+      let { value } = event.target;
+      let filteredFeedback = this.feedback.filter((item) => {
+        return item.description.toLowerCase().includes(value.toLowerCase());
+      })
+      let feedback = value.length ? filteredFeedback : FEEDBACK;
+      set(this, 'feedback', feedback);
+    }
+  }
 });

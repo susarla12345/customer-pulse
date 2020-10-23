@@ -1,5 +1,12 @@
 <div class="feedback-wrapper">
   <div class="feedback-list">
+    <div class="search-wrapper">
+      <input class="feedback-search"
+        type="search"
+        placeholder="Search feedback"
+        onkeyup={{action 'search'}}
+      />
+    </div>
     {{#each feedback as |f|}}
       <div class="feedback-content">
         <div class="header">
@@ -22,6 +29,8 @@
   </div>
 
   <div class="feedback-sidebar">
-
+    <div class="sentiment-chart">
+      {{customer-feedback/sentiment-chart}}
+    </div>
   </div>
 </div>
