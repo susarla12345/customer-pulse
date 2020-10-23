@@ -8,51 +8,62 @@
       />
     </div>
     <div class="feedback-list">
-      {{#each feedback as |f|}}
-      <div class="feedback-content">
-        <div class="header">
-          <span class="rating {{if (gt f.rating 5) 'rating--positive' 'rating--negative'}}">
-            {{f.rating}}
-          </span>
+      {{#if feedback.length}}
+        {{#each feedback as |f|}}
+        <div class="feedback-content">
+          <div class="header">
+            <span class="rating {{if (gt f.rating 5) 'rating--positive' 'rating--negative'}}">
+              {{f.rating}}
+            </span>
 
-          <span class="description">
-            {{f.description}}
-          </span>
+            <span class="description">
+              {{f.description}}
+            </span>
+          </div>
+          <div class="tags-wrapper">
+            {{customer-feedback/tags attributes=f.attributes}}
+          </div>
+          <div class="feedback-content--time">
+            {{moment-from-now f.createdOn}}
+          </div>
         </div>
-        <div class="tags-wrapper">
-          {{customer-feedback/tags attributes=f.attributes}}
-        </div>
-        <div class="feedback-content--time">
-          {{moment-from-now f.createdOn}}
-        </div>
+      {{/each}}
+    {{else}}
+      <div class="no-feedback-wrapper">
+        <img src="/images/no-feedback.svg"
+          alt='No feedback available'>
       </div>
-    {{/each}}
+
+      <p class="no-feedback-wrapper--text">No Feedback available</p>
+    {{/if}}
     </div>
 
-    <div class="footer">
-      <div class="left-options">
-        <div class="pagination">
-          {{#if showPrev}}
-            <button class="prev" onclick={{action 'changePage' 'prev'}}>Prev</button>
-          {{/if}}
-          <span class="page">{{currentPage}}</span>
-          {{#if showNext}}
-            <button class="next" onclick={{action 'changePage' 'next'}}>Next</button>
-          {{/if}}
+    {{#if feedback.length}}
+      <div class="footer">
+        <div class="left-options">
+          <div class="pagination">
+            {{#if showPrev}}
+              <button class="prev" onclick={{action 'changePage' 'prev'}}>Prev</button>
+            {{/if}}
+            <span class="page">{{currentPage}}</span>
+            {{#if showNext}}
+              <button class="next" onclick={{action 'changePage' 'next'}}>Next</button>
+            {{/if}}
+          </div>
         </div>
-      </div>
 
-      <div class="right-options">
-        <div class="sorting">
-          <span class="sort-label">Sort by</span>
-          <select class="sort-by" name="cars" onchange={{action 'sortFeedback'}}>
-            <option value="time">Created at</option>
-            <option value="rating">Rating</option>
-          </select>
+        <div class="right-options">
+          <div class="sorting">
+            <span class="sort-label">Sort by</span>
+            <select class="sort-by" name="cars" onchange={{action 'sortFeedback'}}>
+              <option value="time">Created at</option>
+              <option value="rating">Rating</option>
+            </select>
+          </div>
         </div>
       </div>
+      {{/if}}
     </div>
-  </div>
 
 
   <div class="feedback-sidebar">

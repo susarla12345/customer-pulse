@@ -936,11 +936,17 @@ export default Component.extend({
   currentPage: 1,
   chartOptions,
   sortBy: 'createdOn',
-  feedback: computed('currentPage', 'sortBy', function() {
+  feedback: computed('currentPage', 'sortBy', 'searchTerm', function() {
     let feedback = FEEDBACK[this.currentPage];
     let sortedFeedback = feedback.sortBy(this.sortBy);
+    let searchTerm = this.searchTerm || '';
+ 
+    let searchResults = sortedFeedback.filter((item) => {
+      return item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    })
+    let searchedFeedback = searchTerm.length ? searchResults : sortedFeedback;
 
-    return sortedFeedback;
+    return searchedFeedback;
   }),
   
   showPrev: computed('currentPage', function() {
@@ -954,11 +960,7 @@ export default Component.extend({
   actions: {
     search(event) {
       let { value } = event.target;
-      let filteredFeedback = this.feedback.filter((item) => {
-        return item.description.toLowerCase().includes(value.toLowerCase());
-      })
-      let feedback = value.length ? filteredFeedback : FEEDBACK;
-      set(this, 'feedback', feedback);
+      set(this, 'searchTerm', value);
     },
 
     changePage(type) {
