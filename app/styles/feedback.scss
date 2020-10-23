@@ -4,6 +4,8 @@
 
   .feedback-list {
     width: 60%;
+    max-height: 650px;
+    overflow-y: scroll;
   }
 
   .feedback-content {
@@ -79,4 +81,8 @@
     height: 28px;
     padding: 32px;
   }
+}
+
+.sentiment-chart {
+  border-bottom: 2px solid #f7f7f7;
 }
