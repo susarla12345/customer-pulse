@@ -1,0 +1,24 @@
+<div class="feedback-wrapper">
+  <div class="feedback-list">
+    {{#each feedback as |f|}}
+      <div class="feedback-content">
+        <div class="header">
+          <span class="rating">
+            {{f.rating}}
+          </span>
+
+          <span class="description">
+            {{f.description}}
+          </span>
+        </div>
+        <div class="feedback-content--time">
+          {{f.createdOn}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="feedback-sidebar">
+
+  </div>
+</div>

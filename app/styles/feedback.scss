@@ -1,0 +1,26 @@
+.feedback-wrapper {
+  display: flex;
+  border: 1px solid #f7f7f7;
+
+  .feedback-list {
+    width: 60%;
+  }
+
+  .feedback-content {
+    border: 1px solid #f7f7f7;
+    padding: 20px;
+   
+    .header {
+      display: flex;
+
+      .description {
+        margin-left: 16px;
+        margin-bottom: 16px;
+      }
+    }
+
+    &--time {
+      margin-left: 24px;
+    }
+  }
+}
