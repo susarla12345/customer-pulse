@@ -78,8 +78,7 @@ const columns = [{
     valuePath: 'delta',
     cellComponent: 'cell-renderer',
     width: '20%'
-}
-]
+}]
 
 export default Component.extend({
     model: THEMES,

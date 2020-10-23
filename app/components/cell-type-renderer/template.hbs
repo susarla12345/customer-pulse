@@ -1,5 +1,5 @@
 {{#if (eq column.valuePath 'themes') }}
-  <span class="theme-type-name">{{row.type}}</span>
+  <span class="theme-type-name">{{row.name}}</span>
 {{else if (eq column.valuePath 'sentiment')}}
   {{cell-renderer/sentiment sentiment=row.netSentiment}}
 {{else if (eq column.valuePath 'netSentiment')}}
