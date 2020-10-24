@@ -67,8 +67,14 @@
 
 
   <div class="feedback-sidebar">
+
     <div class="sentiment-chart">
-      {{high-charts chartOptions=chartOptions}}
+      {{customer-feedback/sentiment-chart}}
+    </div>
+
+    <div class="feedback-filters-wrapper">
+      {{customer-feedback/feedback-filters applyFilters=(action 'applyFilters')}}
     </div>
   </div>
+
 </div>

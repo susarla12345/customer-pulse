@@ -88,6 +88,7 @@
 
 .sentiment-chart {
   border-bottom: 2px solid #f7f7f7;
+  margin-left: 40px;
 }
 
 .footer {
@@ -112,6 +113,20 @@
 
   &--text {
     text-align: center;
+  }
+}
+
+.feedback-filters-wrapper {
+  .feedback-filters {
+    margin: 10%;
+  }
+
+  .type-filters {
+    margin: 16px;
+  }
+
+  .sentiment {
+    margin: 8px 0;
   }
 }
 

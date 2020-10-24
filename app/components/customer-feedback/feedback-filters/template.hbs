@@ -1,0 +1,23 @@
+<div class="feedback-filters">
+  {{#each checkedFilters as |theme|}}
+    {{log checkedFilters}}
+    <div>
+      <input type="checkbox" name={{theme.name}} value={{theme.checked}} checked={{theme.checked}} onchange={{action 'changeThemeValue' theme.name}}>
+      <label for={{theme.name}}> {{theme.name}}</label>
+    </div>
+    <div class="type-filters">
+      {{#each theme.types as |type|}}
+        <div>
+          <input type="checkbox" name={{type.name}} value={{type.checked}} checked={{type.checked}} onchange={{action 'changeTypeValue' theme.name type.name}}>
+          <label for={{type.name}}> {{type.name}}</label>
+
+          <div class="sentiment">
+            {{cell-renderer/sentiment sentiment=type.postive}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+
+  <button onclick={{action 'applyFilters'}}>Apply</button>
+</div>

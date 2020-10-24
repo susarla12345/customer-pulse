@@ -10,10 +10,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -31,10 +31,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -53,10 +53,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -75,10 +75,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -97,10 +97,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -119,10 +119,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -141,10 +141,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -163,10 +163,10 @@ const FEEDBACK = {
       'product-attributes': {
         'print-quality': 6
       },
-      'logistics': {
-        'delivery': 5,
-        'speed': 5
-      },
+      // 'logistics': {
+      //   'delivery': 5,
+      //   'speed': 5
+      // },
       'online-experience': {
         'easy-to-use': 10
       },
@@ -883,60 +883,10 @@ const FEEDBACK = {
     totalCount: 40
   }
 }
-
-const chartOptions = {
-  chart: {
-  plotBackgroundColor: null,
-  plotBorderWidth: null,
-  plotShadow: false,
-  type: 'pie'
-},
-title: {
-  text: 'Customer sentiment'
-},
-tooltip: {
-  pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-},
-accessibility: {
-  point: {
-      valueSuffix: '%'
-  }
-},
-plotOptions: {
-  pie: {
-      allowPointSelect: true,
-      cursor: 'pointer',
-      dataLabels: {
-          enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-      }
-  }
-},
-series: [{
-  name: 'Brands',
-  colorByPoint: true,
-  data: [{
-      name: 'Positive',
-      y: 60,
-      color: '#007958'
-  }, {
-      name: 'Negative',
-      y: 30,
-      color: '#c82124'
-  }, {
-      name: 'Neutral',
-      y: 10,
-      color: '#475867'
-  }]
-}]
-}
-
-
 export default Component.extend({
   currentPage: 1,
-  chartOptions,
   sortBy: 'createdOn',
-  feedback: computed('currentPage', 'sortBy', 'searchTerm', function() {
+  feedback: computed('currentPage', 'sortBy', 'searchTerm', 'filterThemes', 'filterTypes', function() {
     let feedback = FEEDBACK[this.currentPage];
     let sortedFeedback = feedback.sortBy(this.sortBy);
     let searchTerm = this.searchTerm || '';
@@ -945,8 +895,39 @@ export default Component.extend({
       return item.description.toLowerCase().includes(searchTerm.toLowerCase());
     })
     let searchedFeedback = searchTerm.length ? searchResults : sortedFeedback;
+    let filteredFeedback;
 
-    return searchedFeedback;
+    if(this.filterThemes && this.filterThemes.length || this.filterTypes && this.filterTypes.length) {
+      filteredFeedback = searchedFeedback.filter((feedback) => {
+        let { attributes } = feedback;
+        // let typeFound;
+        // let themeFound = this.findMatch(Object.keys(attributes), this.filterThemes);
+        // Object.keys(attributes).forEach((attribute) => {
+        //   let types = Object.keys(attributes[attribute])
+        //   typeFound = this.findMatch(types, this.filterTypes);
+        // })
+
+        // return typeFound || themeFound
+
+        let originalThemeArray = Object.keys(attributes)
+        let selectedThemeArray = this.filterThemes;
+
+        let originalTypeArray = [];
+        Object.keys(attributes).forEach((attribute) => {
+          let types = Object.keys(attributes[attribute])
+          originalTypeArray.push(...types);
+        })
+
+        let selectedTypeArray = this.filterTypes;
+
+        return this.findMatch(originalThemeArray, selectedThemeArray) || this.findMatch(selectedTypeArray, originalTypeArray);
+
+      });
+      return filteredFeedback;
+    } else {
+      return searchedFeedback;
+    }
+    
   }),
   
   showPrev: computed('currentPage', function() {
@@ -976,6 +957,11 @@ export default Component.extend({
       }
     },
 
+    applyFilters(filterObject) {
+      set(this, 'filterThemes', filterObject.appliedThemes);
+      set(this, 'filterTypes', filterObject.appliedTypes);
+    },
+
     sortFeedback(event) {
       let { value } = event.target;
       switch(value) {
@@ -989,4 +975,8 @@ export default Component.extend({
       }
     }
   },
+
+  findMatch(array1, array2) {
+    return array1.some(element=> array2.includes(element))
+  }
 });
