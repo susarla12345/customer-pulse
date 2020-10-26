@@ -3,6 +3,7 @@
     <div class="options options--left">
         {{#each tabs as |tab|}}
             {{#link-to tab.route class=(concat 'tab ' tab.name)}}
+                {{svg-jar tab.icon class="svg-icon"}}
                 {{tab.name}}
              {{/link-to}}
 
